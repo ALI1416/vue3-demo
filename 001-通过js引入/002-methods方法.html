@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="js/vue-3.2.26.js"></script>
+  <style>
+      [v-cloak] {
+          display: none;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- v-once数据只初始化，后续操作不会改变 -->
+  <h3 v-once>计数器初始值：{{counter}}</h3>
+  <h3>计数器的值：{{counter}}</h3>
+  <!-- v-on:监听xx事件，click点击事件，内部可以直接写执行的代码，也可以直接写函数名 -->
+  <button v-on:click="counter--">-</button>
+  <!-- @click是v-on:click的方法糖 -->
+  <!-- 函数名可以不加括号 -->
+  <button @click="add()">+</button>
+  <hr>
+  <!-- HTML标签不会自动解析 -->
+  <p>{{url}}</p>
+  <!-- v-pre不解析{{}}，很少使用 -->
+  <p v-pre>{{url}}</p>
+  <!-- v-text不解析html标签，会覆盖掉当前标签的内容，很少使用，推荐使用{{}} -->
+  <p v-text="url">该内容会被覆盖</p>
+  <!-- v-html可以解析html标签 -->
+  <p v-html="url"></p>
+  <hr>
+  <!-- 数组遍历：(子项,下标) in 数组 -->
+  <ul>
+    <li v-for="(item,index) in movies">{{index}}-{{item}}</li>
+  </ul>
+</div>
+<!-- v-cloak加载状态 -->
+<div id="cloak" v-cloak>
+  v-cloak斗篷，该元素渲染完成后，会把v-cloak标签删除掉，配合style的[v-cloak]{display: none;}隐藏效果，可以实现：
+  加载成功之前不显示该元素内容。
+  配合脚手架后，就不再使用这个。
+</div>
+</body>
+<script>
+  const App = {
+    data() {
+      return {
+        counter: 24,
+        movies: ['aaa', 'bbb', 'ccc', 'ddd'],//数组
+        url: '<a href="https://www.baidu.com" target="_blank">百度一下</a>',
+      }
+    },
+    // 绑定的方法
+    methods: {
+      // 计数器增加的方法
+      add() {
+        // 使用当前对象的变量要加this.
+        this.counter++;
+      },
+    }
+  }
+  let app = Vue.createApp(App).mount("#app");
+  setTimeout(function () {
+    Vue.createApp({}).mount("#cloak");
+  }, 1000);
+</script>
+</html>

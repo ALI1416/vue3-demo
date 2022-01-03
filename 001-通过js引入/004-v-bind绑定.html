@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="js/vue-3.2.26.js"></script>
+  <style>
+      .red {
+          color: red;
+      }
+
+      .blue {
+          color: blue;
+      }
+
+      .yellow {
+          color: yellow;
+      }
+
+      .bold {
+          font-weight: bold;
+      }
+
+      .italic {
+          font-style: italic;
+      }
+
+      .underline {
+          text-decoration: underline;
+      }
+
+      #c1 {
+          color: red;
+      }
+
+      .c1 {
+          color: blue;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- v-bind绑定属性，:是语法糖 -->
+  <img v-bind:src="imgUrl" :alt="imgAlt">
+  <p class="red">class直接显示红色</p>
+  <p :class="redFont">:class绑定红色</p>
+  <p>
+    <!-- {key1:value1, key2:value2}一对大括号代表对象 -->
+    <span class="underline" :class="{blue:isBlue,italic:isItalic}">对象动态绑定class</span>
+    <br>
+    <!-- 可以换成方法获取对象，要加上() -->
+    <span class="underline" :class="getClasses()">对象动态绑定class</span>
+    <br>
+    <button @click="blueClick">蓝色</button>
+    <button @click="italicClick">倾斜</button>
+    <br>
+    <!-- 数组语法，很少使用 -->
+    <span class="underline" :class="[blueFont,italicFont]">数组静态绑定class</span>
+    <br>
+    <!-- 加上单引号表示字符串，不加表示变量 -->
+    <span class="underline" :class="['blue','italic']">数组静态绑定class</span>
+  </p>
+  <!-- fontSize属性名要使用驼峰形式 -->
+  <p :style="{fontSize: fontSize50+'px'}">对象动态绑定style</p>
+  <p :style="[fontObj,colorObj]">对象数组动态绑定style</p>
+  <!-- 动态指令，很少用，会把参数名转为小写 -->
+  <p v-bind:[attributeName]="attributeValue">对象数组动态绑定style</p>
+  <button @click="attributeClick">切换指令</button>
+</div>
+</body>
+<script>
+  const App = {
+    data() {
+      return {
+        imgUrl: '../img/goods/苹果.PNG',
+        imgAlt: '苹果',
+        redFont: 'red',
+        blueFont: 'blue',
+        yellowFont: 'yellow',
+        isBlue: true,
+        isItalic: true,
+        boldFont: 'bold',
+        italicFont: 'italic',
+        fontSize50: 50,
+        fontObj: {fontSize: '40px'},
+        colorObj: {color: 'red'},
+        attributename: 'id',
+        attributeValue: 'c1'
+      }
+    },
+    methods: {
+      blueClick() {
+        this.isBlue = !this.isBlue;
+      },
+      italicClick() {
+        this.isItalic = !this.isItalic;
+      },
+      getClasses() {
+        return {blue: this.isBlue, italic: this.isItalic}
+      },
+      attributeClick() {
+        return this.attributename = (this.attributename === 'id' ? 'class' : 'id');
+      }
+    },
+  }
+  let app = Vue.createApp(App).mount("#app");
+</script>
+</html>

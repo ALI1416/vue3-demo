@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <!-- 引入vue -->
+  <script src="js/vue-3.2.26.js"></script>
+</head>
+<body>
+<!--这个div标签没有挂载到vue上，所以无法渲染-->
+<div>{{msg}}</div>
+<div id="app">
+  <!-- {{}}双大括号语法：Mustache(胡子/胡须)语法 -->
+  <!-- 使用{{}}双向绑定变量msg -->
+  <h1>Hello, {{msg}}</h1>
+  <!-- 可以使用多个{{}} -->
+  <h3>{{firstName}} {{lastName}}</h3>
+  <!-- 可以在{{}}内进行计算 -->
+  <h3>{{firstName+' '+lastName}}</h3>
+  <h3>{{counter*2}}</h3>
+  <!-- 可以使用js -->
+  <h3>{{firstName.split('').reverse().join('')}}</h3>
+  <h3>{{ok?'Ok':'No'}}</h3>
+</div>
+</body>
+<script>
+  // 对象App
+  const App = {
+    // 绑定的数据
+    // 也可以写成 data:function()
+    data() {
+      // 返回对象
+      return {
+        // 返回变量msg和值World !
+        msg: "World !",
+        firstName: "Cheng",
+        lastName: "Kai",
+        counter: 24,
+        ok: true
+      }
+    }
+  }
+  // 创建全局应用App，挂载到#app
+  let app = Vue.createApp(App).mount("#app");
+  // 页面显示Hello, World !
+  // 可以在浏览器控制台输入app.msg="vue3"，则页面显示Hello, vue3
+</script>
+</html>
