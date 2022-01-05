@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model="msg">
+  <h3>值:{{msg}}</h3>
+  <h3>旧值:{{oldValue}},新值{{newValue}}</h3>
+</div>
+</body>
+<script>
+  const App = {
+    data() {
+      return {
+        msg: "123",
+        oldValue: "123",
+        newValue: "123",
+      }
+    },
+    // 监听值的变化
+    watch: {
+      // 值的名称(新值,旧值)
+      msg(newValue, oldValue) {
+        this.newValue = newValue;
+        this.oldValue = oldValue;
+      }
+    }
+  }
+  let app = Vue.createApp(App).mount("#app");
+</script>
+</html>

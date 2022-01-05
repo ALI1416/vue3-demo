@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Title</title>
-  <script src="js/vue-3.2.26.js"></script>
+  <script src="../js/vue-3.2.26.js"></script>
   <style>
       .red {
           color: red;
@@ -56,13 +56,13 @@
     <button @click="blueClick">蓝色</button>
     <button @click="italicClick">倾斜</button>
     <br>
-    <!-- 数组语法，很少使用 -->
-    <span class="underline" :class="[blueFont,italicFont]">数组静态绑定class</span>
+    <!-- 数组语法，很少使用，可以在里面加上对象 -->
+    <span class="underline" :class="[blueFont,{italic:isItalic}]">数组静态绑定class</span>
     <br>
     <!-- 加上单引号表示字符串，不加表示变量 -->
     <span class="underline" :class="['blue','italic']">数组静态绑定class</span>
   </p>
-  <!-- fontSize属性名要使用驼峰形式 -->
+  <!-- fontSize属性名要使用驼峰形式，或使用单引号 -->
   <p :style="{fontSize: fontSize50+'px'}">对象动态绑定style</p>
   <p :style="[fontObj,colorObj]">对象数组动态绑定style</p>
   <!-- 动态指令，很少用，会把参数名转为小写 -->
@@ -74,7 +74,7 @@
   const App = {
     data() {
       return {
-        imgUrl: '../img/goods/苹果.PNG',
+        imgUrl: '../../img/goods/苹果.PNG',
         imgAlt: '苹果',
         redFont: 'red',
         blueFont: 'blue',
