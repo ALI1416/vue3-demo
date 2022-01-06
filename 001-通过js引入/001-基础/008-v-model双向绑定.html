@@ -105,9 +105,17 @@
   您输入了：{{lazy2}}
   <hr>
   <!-- type="number"获取的值为number类型 -->
-  <input type="number" v-model.number="num">
+  <input type="number" v-model="num1">
   <br>
-  您输入了：{{num}}，类型是{{typeof num}}
+  您输入了：{{num1}}，类型是{{typeof num1}}
+  <br>
+  <input type="text" v-model="num2">
+  <br>
+  您输入了：{{num2}}，类型是{{typeof num2}}
+  <br>
+  <input type="text" v-model.number="num3">
+  <br>
+  您输入了：{{num3}}，类型是{{typeof num3}}
   <hr>
   <!-- trim去除左右两端的空格 -->
   <input type="text" v-model="trim1">
@@ -134,12 +142,14 @@
         cb1: ['c'],
         lazy1: 'asd',
         lazy2: 'abc',
-        num: 0,
+        num1: 0,
+        num2: 0,
+        num3: 0,
         trim1: '123',
         trim2: '456',
       }
     }
   }
-  let app = Vue.createApp(App).mount("#app");
+  const app = Vue.createApp(App).mount("#app");
 </script>
 </html>

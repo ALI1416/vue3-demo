@@ -14,23 +14,28 @@
     <!-- 只获取值 -->
     <li v-for="item in list" :key="item">{{item}}</li>
   </ul>
+  <hr>
   <ul>
     <!-- 获取值和下标 -->
     <li v-for="(item, index) in list">{{index+1}}.{{item}}</li>
   </ul>
+  <hr>
   <!-- 遍历对象 -->
   <ul>
     <!-- 只获取值 -->
     <li v-for="item in obj">{{item}}</li>
   </ul>
+  <hr>
   <ul>
     <!-- 获取值和属性名 -->
     <li v-for="(item, key) in obj">{{key}}.{{item}}</li>
   </ul>
+  <hr>
   <ul>
     <!-- 获取值、属性名和下标 -->
     <li v-for="(item, key, index) in obj">{{index+1}}.{{key}}.{{item}}</li>
   </ul>
+  <hr>
   <!-- :key优化 -->
   <ul>
     <!-- 使用v-for时，最好带上:key，如下所示 -->
@@ -49,6 +54,10 @@
     <!-- :key的值需要是固定的值，如item不会变可以使用，index会变不可使用 -->
     <!-- item的值最好是唯一值 -->
     <li v-for="item in list" :key="item">{{item}}</li>
+  </ul>
+  <hr>
+  <ul>
+    <li v-for="item in list2">{{item}}</li>
   </ul>
   <!-- push/unshift/pop/shift/splice/sort/reverse可以使界面刷新，赋值替换元素不可以 -->
   <div>
@@ -85,9 +94,6 @@
     <!-- 赋值替换元素 -->
     <button @click="replace">赋值替换元素</button>
   </div>
-  <ul>
-    <li v-for="item in list2">{{item}}</li>
-  </ul>
 </div>
 </body>
 <script>
@@ -110,6 +116,6 @@
       }
     },
   }
-  let app = Vue.createApp(App).mount("#app");
+  const app = Vue.createApp(App).mount("#app");
 </script>
 </html>

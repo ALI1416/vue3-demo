@@ -9,15 +9,32 @@
 </head>
 <body>
 <div id="app">
-
+  <h1>{{msg}}</h1>
+  <h1>{{hi}}</h1>
+  <hello></hello>
 </div>
 </body>
+<template id="hello">
+  <h2>{{msg}}</h2>
+  <h2>{{hi}}</h2>
+</template>
 <script>
+  const hello = {
+    template: '#hello',
+    data() {
+      return {
+        hi: "hi"
+      }
+    }
+  }
   const App = {
     data() {
       return {
-
+        msg: "msg"
       }
+    },
+    components: {
+      hello
     }
   }
   const app = Vue.createApp(App).mount("#app");

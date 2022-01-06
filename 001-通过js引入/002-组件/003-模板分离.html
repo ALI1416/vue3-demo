@@ -9,14 +9,27 @@
 </head>
 <body>
 <div id="app">
-
+  <hello1></hello1>
+  <hello2></hello2>
 </div>
 </body>
+<!-- 使用script分离组件 -->
+<script type="text/x-template" id="hello1">
+  <h1>hello1</h1>
+</script>
+<!-- 使用template分离组件 -->
+<template id="hello2">
+  <h1>hello2</h1>
+</template>
 <script>
   const App = {
-    data() {
-      return {
-
+    components: {
+      // 根据模板id绑定组件
+      'hello1': {
+        template: '#hello1',
+      },
+      'hello2': {
+        template: '#hello2',
       }
     }
   }

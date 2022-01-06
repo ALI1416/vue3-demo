@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <hello-world></hello-world>
+  <hello1></hello1>
+  <hello2></hello2>
+</div>
+</body>
+<script>
+  // 组件hello1(未注册，不显示)
+  const hello1 = {
+    template: `
+          <h1>Hello1</h1>
+          `
+  }
+  // 组件hello2
+  const hello2 = {
+    template: `
+          <h1>Hello2</h1>
+          `
+  }
+  const App = {
+    // 注册组件
+    components: {
+      // 组件hello-world(组件名要驼峰(在cli中才可使用)或连字符形式)
+      // 使用语法糖注册局部组件
+      'hello-world': {
+        // 模板，es6中可以使用tab键上方的`来定义字符串，支持换行
+        template: `
+          <h1>Hello</h1>
+          <p>Hello, World !</p>
+          `
+      },
+      hello2,
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>

@@ -43,29 +43,27 @@
 <body>
 <div id="app">
   <!-- v-bind绑定属性，:是语法糖 -->
-  <img v-bind:src="imgUrl" :alt="imgAlt">
+  <img v-bind:src="imgUrl" :alt="imgAlt" width="100" height="100">
+  <hr>
   <p class="red">class直接显示红色</p>
   <p :class="redFont">:class绑定红色</p>
-  <p>
-    <!-- {key1:value1, key2:value2}一对大括号代表对象 -->
-    <span class="underline" :class="{blue:isBlue,italic:isItalic}">对象动态绑定class</span>
-    <br>
-    <!-- 可以换成方法获取对象，要加上() -->
-    <span class="underline" :class="getClasses()">对象动态绑定class</span>
-    <br>
-    <button @click="blueClick">蓝色</button>
-    <button @click="italicClick">倾斜</button>
-    <br>
-    <!-- 数组语法，很少使用，可以在里面加上对象 -->
-    <span class="underline" :class="[blueFont,{italic:isItalic}]">数组静态绑定class</span>
-    <br>
-    <!-- 加上单引号表示字符串，不加表示变量 -->
-    <span class="underline" :class="['blue','italic']">数组静态绑定class</span>
-  </p>
+  <hr>
+  <!-- {key1:value1, key2:value2}一对大括号代表对象 -->
+  <p class="underline" :class="{blue:isBlue,italic:isItalic}">对象动态绑定class</p>
+  <!-- 可以换成方法获取对象，要加上() -->
+  <p class="underline" :class="getClasses()">对象动态绑定class，使用methods</p>
+  <!-- 数组语法，很少使用，可以在里面加上对象 -->
+  <p class="underline" :class="[blueFont,{italic:isItalic}]">数组静态绑定class</p>
+  <!-- 加上单引号表示字符串，不加表示变量 -->
+  <p class="underline" :class="['blue','italic']">数组静态绑定class</p>
+  <button @click="blueClick">蓝色</button>
+  <button @click="italicClick">倾斜</button>
+  <hr>
   <!-- fontSize属性名要使用驼峰形式，或使用单引号 -->
-  <p :style="{fontSize: fontSize50+'px'}">对象动态绑定style</p>
+  <p :style="{fontSize: fontSize20+'px'}">对象动态绑定style</p>
   <p :style="[fontObj,colorObj]">对象数组动态绑定style</p>
-  <!-- 动态指令，很少用，会把参数名转为小写 -->
+  <hr>
+  <!-- 动态指令，很少用，会把参数名转为小写(在cli中不会) -->
   <p v-bind:[attributeName]="attributeValue">对象数组动态绑定style</p>
   <button @click="attributeClick">切换指令</button>
 </div>
@@ -83,8 +81,8 @@
         isItalic: true,
         boldFont: 'bold',
         italicFont: 'italic',
-        fontSize50: 50,
-        fontObj: {fontSize: '40px'},
+        fontSize20: 20,
+        fontObj: {fontSize: '30px'},
         colorObj: {color: 'red'},
         attributename: 'id',
         attributeValue: 'c1'
@@ -105,6 +103,6 @@
       }
     },
   }
-  let app = Vue.createApp(App).mount("#app");
+  const app = Vue.createApp(App).mount("#app");
 </script>
 </html>

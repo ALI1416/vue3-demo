@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <!-- 需要绑定事件来传递值 -->
+  <!-- 绑定事件不支持驼峰标识(cli支持)，必须把 驼峰 转成 连字符 才能使用 -->
+  <hello :hello-msg="msg" :hello-list="list"></hello>
+  <hr>
+  <!-- 如果没有绑定，会传递引号内的字符串 -->
+  <hello hello-msg="msg" hello-list="list"></hello>
+  <hr>
+  <hello2 :hello-msg="msg" :hello-list="list" :hello-msg2="msg2" :hello-msg3="msg3" :hello-list2="list2"></hello2>
+</div>
+</body>
+<template id="hello">
+  <h3>helloMsg字符串:{{helloMsg}}</h3>
+  <h3>helloList数组:{{helloList}}</h3>
+</template>
+<template id="hello2">
+  <h3>helloMsg限制类型字符串:{{helloMsg}}</h3>
+  <h3>helloMsg2限制类型字符串和数字:{{helloMsg2}}</h3>
+  <h3>helloMsg3限制类型Person:{{helloMsg3}}</h3>
+  <h3>helloList限制类型数组:{{helloList}}</h3>
+  <h3>helloMsg4默认值:{{helloMsg4}}</h3>
+  <h3>helloMsg5必须参数:{{helloMsg5}}</h3>
+  <h3>helloList2默认值和校验:{{helloList2}}</h3>
+</template>
+<script>
+  function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  const hello = {
+    template: '#hello',
+    // props属性，来接收父组件的值
+    // 使用数组接收
+    props: ['helloMsg', 'helloList'],
+  }
+  const hello2 = {
+    template: '#hello2',
+    // 使用对象接收
+    props: {
+      // 限制接收的类型
+      helloMsg: String,
+      // 多种类型
+      helloMsg2: {String, Number},
+      // 自定义类型
+      helloMsg3: Person,
+      helloList: Array,
+      // 对象
+      helloMsg4: {
+        type: String,
+        // 默认值
+        default: '默认值',
+      },
+      helloMsg5: {
+        type: String,
+        // 必须参数，没有会报错
+        required: true,
+      },
+      helloList2: {
+        type: Array,
+        // 默认值
+        default() {
+          return ['list1', 'list2', 'list3']
+        },
+        // 自定义校验类型，不符合会报错
+        validator(value) {
+          return value.length > 2;
+        },
+      }
+    }
+  }
+  const App = {
+    data() {
+      return {
+        msg: "message",
+        list: ['a', 'b', 'c'],
+        msg2: 1234,
+        msg3: new Person("Cheng", "Kai"),
+        list2: ['a', 'b']
+      }
+    },
+    components: {
+      hello,
+      hello2
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>

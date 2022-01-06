@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <hello1>
+    <!-- 在父组件标签内部调用子组件无效 -->
+    <hello2></hello2>
+    <!-- 外部调用也无效，因为没有注册 -->
+  </hello1>
+  <!-- 子组件注册了，父组件没有注册不能使用 -->
+  <hello2></hello2>
+</div>
+</body>
+<script>
+  // 组件hello5
+  const hello5 = {
+    template: `
+  <h1>Hello5</h1>
+  `
+  }
+  // 组件hello4
+  const hello4 = {
+    template: `
+  <h1>Hello4</h1>
+  `
+  }
+  // 组件hello3
+  const hello3 = {
+    template: `
+  <h1>Hello3</h1>
+  `
+  }
+  // 组件hello2
+  const hello2 = {
+    template: `
+  <h1>Hello2</h1>
+  `
+  }
+  // 组件hello1
+  const hello1 = {
+    template: `
+  <h1>Hello1</h1>
+  <!-- 在父组件模板内部调用子组件有效 -->
+  <hello2></hello2>
+  <!-- 父组件注册的组件，子组件内没有注册无法使用 -->
+  <hello3></hello3>
+  <!-- 父组件注册的组件，子组件内注册过才能使用 -->
+  <hello4></hello4>
+  <!-- 全局注册的组件，子组件不注册也能使用 -->
+  <hello5></hello5>
+  `,
+    components: {
+      // 注册子组件
+      hello2,
+      hello4
+    }
+  }
+  // 可以把App当成组件，root组件
+  const App = {
+    components: {
+      hello1,
+      hello3,
+      hello4
+    }
+  }
+  const app = Vue.createApp(App)
+      // 全局注册组件
+      .component('hello5', hello5)
+      .mount("#app");
+</script>
+</html>
