@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>父组件{{msg}}</h1>
+  <hello></hello>
+</div>
+</body>
+<template id="hello">
+  <h2>子组件{{hello}}</h2>
+  <hi></hi>
+</template>
+<template id="hi">
+  <h3>孙子组件{{hi}}</h3>
+  <button @click="getParent">获取父组件</button>
+</template>
+<script>
+  const hi = {
+    template: '#hi',
+    data() {
+      return {
+        hi: "hi"
+      }
+    },
+    methods: {
+      getParent() {
+        // 不推荐访问父组件，会使耦合度增加，访问根组件也很少使用
+        // 通过this.$root获取根组件(app实例)
+        console.log(this.$root);
+        // 获取父组件的值
+        console.log(this.$root.msg);
+        // 通过this.$parent获取父组件
+        console.log(this.$parent);
+        console.log(this.$parent.hello);
+      }
+    },
+  }
+  const hello = {
+    template: '#hello',
+    data() {
+      return {
+        hello: "hello"
+      }
+    },
+    components: {
+      hi
+    }
+  }
+  const App = {
+    data() {
+      return {
+        msg: "msg"
+      }
+    },
+    components: {
+      hello
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>

@@ -10,7 +10,9 @@
 <body>
 <div id="app">
   <h1>{{msg}}</h1>
-  <hello></hello>
+  <!-- 给组件一个ref值，相当于id，使父组件可以找到子组件 -->
+  <hello ref="hello"></hello>
+  <button @click="getHello">获取子组件</button>
 </div>
 </body>
 <template id="hello">
@@ -21,7 +23,12 @@
     template: '#hello',
     data() {
       return {
-        hi: "hi"
+        hi: "hi!"
+      }
+    },
+    methods: {
+      getHi() {
+        return 'getHi:' + this.hi;
       }
     }
   }
@@ -29,6 +36,16 @@
     data() {
       return {
         msg: "msg"
+      }
+    },
+    methods: {
+      getHello() {
+        // 可以用this.$refs.ref值，获取对应组件
+        console.log(this.$refs.hello);
+        // 获取子组件的数据
+        console.log(this.$refs.hello.hi);
+        // 调用子组件的方法
+        console.log(this.$refs.hello.getHi());
       }
     },
     components: {

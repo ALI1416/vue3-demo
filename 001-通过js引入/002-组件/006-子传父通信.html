@@ -9,29 +9,52 @@
 </head>
 <body>
 <div id="app">
-  <h1>{{msg}}</h1>
-  <h1>{{hi}}</h1>
-  <hello></hello>
+  <p v-html="msg"></p>
+  <hr>
+  <!-- 父组件监听子组件的自定义事件 -->
+  <!-- @自定义事件名="父组件接收的方法名" -->
+  <!-- 方法名可以不带参数，也会传递到方法里面 -->
+  <hello @item-click="helloClick"></hello>
 </div>
 </body>
 <template id="hello">
-  <h2>{{msg}}</h2>
-  <h2>{{hi}}</h2>
+  <ul>
+    <li v-for="item in list">
+      <!-- 子组件监听点击事件 -->
+      <button @click="btnClick(item)">{{item}}</button>
+    </li>
+  </ul>
+  <p v-html="msg"></p>
 </template>
 <script>
   const hello = {
     template: '#hello',
     data() {
       return {
-        hi: "hi"
+        msg: '子组件',
+        list: ['aaa', 'bbb', 'ccc'],
       }
-    }
+    },
+    methods: {
+      btnClick(item) {
+        // 使用this.$emit发射一个自定义事件(事件名,传递的值)
+        this.$emit('item-click', item);
+        this.msg += '<br>子组件发送' + item;
+      }
+    },
+    // 声明发射事件，防止警告
+    emits: ['item-click']
   }
   const App = {
     data() {
       return {
-        msg: "msg"
+        msg: "父组件"
       }
+    },
+    methods: {
+      helloClick(item) {
+        this.msg += '<br>父组件收到' + item;
+      },
     },
     components: {
       hello
