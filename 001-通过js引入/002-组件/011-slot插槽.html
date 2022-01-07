@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+  <style>
+      .border {
+          border: 1px solid black;
+          display: inline-block;
+          padding: 2px;
+          margin: 2px;
+      }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- 在标签内写入元素，可以替换到插槽元素 -->
+  <hello1></hello1>
+  <hello1>
+    <button>按钮</button>
+  </hello1>
+  <hello1>
+    <b>粗体</b>
+  </hello1>
+  <hello1>
+    <input type="text" value="输入框">
+  </hello1>
+  <!-- 如果传入的元素个数大于插槽数量，会把所有元素替换到插槽元素 -->
+  <hello1>
+    <button>按钮</button>
+    <b>粗体</b>
+    <input type="text" value="输入框">
+  </hello1>
+  <!-- 插槽里有默认值 -->
+  <hello2></hello2>
+  <hello2>
+    <button>按钮</button>
+  </hello2>
+  <!-- 如果有多个插槽，会把所有插槽内容都替换成一样的内容 -->
+  <hello3>
+    <button>按钮</button>
+    <b>粗体</b>
+  </hello3>
+  <!-- 如果给插槽起名字，只会替换没有名字的插槽 -->
+  <hello4>
+    <button>按钮</button>
+  </hello4>
+  <!-- 没名字的插槽也可以用template:default来命名 -->
+  <hello4>
+    <template v-slot:default>
+      <button>按钮</button>
+    </template>
+  </hello4>
+  <!-- 要替换指定插槽，需要写上插槽的名字 -->
+  <hello4>
+    <template v-slot:center>
+      <button>按钮</button>
+    </template>
+  </hello4>
+  <!-- 替换多个插槽 -->
+  <hello4>
+    <template v-slot:left>
+      <button>按钮</button>
+    </template>
+    <template v-slot:center>
+      <b slot="center">粗体</b>
+    </template>
+  </hello4>
+  <!-- 替换的插槽名字相同时，只会显示第一个 -->
+  <hello4>
+    <template v-slot:center>
+      <button>按钮</button>
+    </template>
+    <template v-slot:center>
+      <b>粗体</b>
+    </template>
+  </hello4>
+</div>
+</body>
+<!-- 普通插槽 -->
+<template id="hello1">
+  <div>
+    hello1
+    <div class="border">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+<!-- 带有默认值的插槽 -->
+<template id="hello2">
+  <div>
+    hello2
+    <div class="border">
+      <!-- 插槽里放入默认值 -->
+      <slot>默认值</slot>
+    </div>
+  </div>
+</template>
+<!-- 多个插槽 -->
+<template id="hello3">
+  <div>
+    hello3
+    <div class="border">
+      <slot></slot>
+    </div>
+    <div class="border">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+<!-- 带有名字的多个插槽 -->
+<template id="hello4">
+  <div>
+    hello4
+    <div class="border">
+      <!-- 给插槽起名字 -->
+      <slot name="left">左</slot>
+    </div>
+    <div class="border">
+      <slot name="center">中</slot>
+    </div>
+    <div class="border">
+      <slot>右</slot>
+    </div>
+  </div>
+</template>
+<script>
+  const hello1 = {
+    template: '#hello1',
+  }
+  const hello2 = {
+    template: '#hello2',
+  }
+  const hello3 = {
+    template: '#hello3',
+  }
+  const hello4 = {
+    template: '#hello4',
+  }
+  const App = {
+    components: {
+      hello1,
+      hello2,
+      hello3,
+      hello4,
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>

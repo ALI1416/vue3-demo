@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <hello></hello>
+  <hr>
+  <hello>
+    <!-- 通过template v-slot:default="slot"来获取数据，slot是别名，可以更换 -->
+    <template v-slot:default="slot">
+      {{slot}}
+      <br>
+      {{slot.data}}
+      <br>
+      <!-- 通过slot.xx来访问传递来的数据 -->
+      <span v-for="item in slot.data">{{item}}-</span>
+      <br>
+      <!-- join('-')拼接字符串 -->
+      <span v-for="item in slot.data.join('-')">{{item}}</span>
+    </template>
+  </hello>
+</div>
+</body>
+<template id="hello">
+  <!-- 通过slot :data="list"传递数据，data是别名，可以更换，list是要传递的数据 -->
+  <slot :data="list">
+    <ul>
+      <li v-for="item in list">{{item}}</li>
+    </ul>
+  </slot>
+</template>
+<script>
+  const hello = {
+    template: '#hello',
+    data() {
+      return {
+        list: ['a', 'b', 'c', 'd'],
+      }
+    }
+  }
+  const App = {
+    components: {
+      hello
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>

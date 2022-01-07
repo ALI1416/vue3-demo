@@ -8,4 +8,3 @@ Need to install the following packages:
   create-vite-app
 Ok to proceed? (y)
 ```
-

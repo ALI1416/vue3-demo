@@ -1,0 +1,1 @@
+(()=>{var o={85:o=>{o.exports={fa:function(){console.log("CommonJS function a()")},fb:function(){console.log("CommonJS function b()")}}}},n={};function t(s){var c=n[s];if(void 0!==c)return c.exports;var r=n[s]={exports:{}};return o[s](r,r.exports,t),r.exports}(()=>{"use strict";const{fa:o,fb:n}=t(85);o(),n(),console.log("ES6 const a"),console.log("ES6 const b")})()})();

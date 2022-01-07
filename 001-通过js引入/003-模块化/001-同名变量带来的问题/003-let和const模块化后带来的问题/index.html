@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <!-- 使用let和const不能解决命名冲突问题，但是其他的文件就可以访问变量 -->
+  <script src="js/a.js"></script>
+  <script src="js/b.js"></script>
+  <script src="js/c.js"></script>
+</head>
+<body>
+</body>
+<script>
+  console.log('index:' + a);
+</script>
+</html>

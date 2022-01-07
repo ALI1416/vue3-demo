@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <script src="../js/vue-3.2.26.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>app</h1>
+  <hello></hello>
+</div>
+</body>
+<template id="hello">
+  <h2>hello</h2>
+  <hello2></hello2>
+</template>
+<template id="hello2">
+  <h3>hello2</h3>
+  {{msg}}
+</template>
+<script>
+  const hello2 = {
+    template: '#hello2',
+    // 注入
+    inject: ['msg']
+  }
+  const hello = {
+    template: '#hello',
+    components: {
+      hello2
+    }
+  }
+  const App = {
+    data() {
+      return {
+        msg: "message",
+      }
+    },
+    // 提供
+    provide() {
+      return {
+        msg: this.msg
+      }
+    },
+    components: {
+      hello,
+    }
+  }
+  const app = Vue.createApp(App).mount("#app");
+</script>
+</html>
