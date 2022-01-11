@@ -12,6 +12,7 @@
   <!-- 需要绑定事件来传递值 -->
   <!-- 绑定事件不支持驼峰标识(cli支持)，必须把 驼峰 转成 连字符 才能使用 -->
   <hello :hello-msg="msg" :hello-list="list"></hello>
+  <button @click="msgChange">修改helloMsg内容</button>
   <hr>
   <!-- 如果没有绑定，会传递引号内的字符串 -->
   <hello hello-msg="msg" hello-list="list"></hello>
@@ -92,6 +93,11 @@
     components: {
       hello,
       hello2
+    },
+    methods: {
+      msgChange() {
+        this.msg = this.msg === "message" ? "Hello, World !" : "message"
+      }
     }
   }
   const app = Vue.createApp(App).mount("#app");
