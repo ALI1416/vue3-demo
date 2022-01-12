@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {toRefs, computed} from 'vue'
+import {computed, toRefs} from 'vue'
 
 export default {
   name: 'HelloWorld',
