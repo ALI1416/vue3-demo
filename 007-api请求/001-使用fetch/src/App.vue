@@ -13,13 +13,12 @@ export default {
     HelloWorld
   },
   setup() {
-    // let api = 'http://httpbin.org'
-    let api = 'https://api.apiopen.top/getJoke'
+    let api = 'http://httpbin.org'
 
     function get() {
       // es6可以通过fetch来请求
-      fetch(api).then(res => res.json()).then(data => {
-        console.log(data);
+      fetch(api + '/get').then(res => res.json()).then(res => {
+        console.log(res);
       }).catch(err => {
         console.log(err);
       })
