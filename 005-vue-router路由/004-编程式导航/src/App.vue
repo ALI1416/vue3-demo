@@ -35,6 +35,9 @@
   <br>
   <!-- 直接使用$router.replace -->
   <button @click="$router.replace({path:'/about/333'})">About 使用replace</button>
+  <br>
+  <!-- 使用replace也可以 -->
+  <router-link to="/about/333" replace>首页</router-link>
   <h3>横跨历史</h3>
   <!-- $router.forward() -->
   <button @click="$router.forward()">向前1条历史记录 使用$router.forward()</button>
@@ -47,7 +50,11 @@
   <br>
   <!-- $router.go(-1) -->
   <button @click="$router.go(-1)">向后1条历史记录 使用$router.go(-1)</button>
-
+  <hr>
+  <!-- active-class属性是会修改点击时的class值，默认有router-link-exact-active，也可以到router中统一修改 -->
+  <router-link to="/about/444" replace active-class="active">/about/444(修改class)</router-link>
+  <br>
+  <router-link to="/about/555" replace active-class="active">/about/555(修改class)</router-link>
 </template>
 
 <script>
@@ -62,3 +69,8 @@ export default {
   }
 }
 </script>
+<style>
+.active {
+  color: red;
+}
+</style>
