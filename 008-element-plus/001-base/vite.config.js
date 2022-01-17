@@ -3,6 +3,7 @@
 // import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 //
 // export default {
+//   // 按需自动导入
 //   plugins: [
 //     AutoImport({
 //       resolvers: [ElementPlusResolver()],
