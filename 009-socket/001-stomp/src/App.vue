@@ -2,8 +2,8 @@
   <div>
     <span>用户名:</span>
     <input v-model="user" type="text" size="10">
-    <button @click="connect">连接</button>
-    <button @click="disconnect" disabled="disabled">断开</button>
+    <button @click="connect" :disabled="connectDisabled">连接</button>
+    <button @click="disconnect" :disabled="!connectDisabled">断开</button>
   </div>
   <div>
     <h3>广播形式</h3>
@@ -55,12 +55,14 @@ const url = "ws://127.0.0.1:8080/ws";
 /* 连接 */
 // 用户名
 const user = ref("");
+// 未连接
+const connectDisabled = ref(false);
 
 // 连接
 function connect() {
   // 用户名
   const header = {
-    user
+    user: user.value
   };
   stomp = Stomp.client(url);
   //连接
@@ -74,7 +76,7 @@ function connect() {
       broadcastMsg2.value = res.body;
     });
     //订阅
-    stomp.subscribe("/app/subscribe/" + user, function (res) {
+    stomp.subscribe("/app/subscribe/" + user.value, function (res) {
       subscribeMsg.value = res.body;
     });
     //订阅异常消息
@@ -89,12 +91,16 @@ function connect() {
     stomp.subscribe("/topic/aaa", function (res) {
       appMsg.value = res.body;
     });
+    connectDisabled.value = true;
   });
 }
 
 // 断开
 function disconnect() {
-
+  if (stomp != null) {
+    stomp.disconnect();
+    connectDisabled.value = false;
+  }
 }
 
 /* 广播形式 */
@@ -103,7 +109,7 @@ const broadcastText = ref("");
 
 // 发送
 function broadcastButton() {
-
+  stomp.send("/app/broadcast", {}, JSON.stringify({"msg": broadcastText.value}))
 }
 
 // 接收的消息
@@ -114,7 +120,7 @@ const broadcastText2 = ref("");
 
 // 发送
 function broadcastButton2() {
-
+  stomp.send("/app/broadcast2", {}, JSON.stringify({"msg": broadcastText2.value}))
 }
 
 // 接收的消息
@@ -132,7 +138,7 @@ const userText = ref("");
 
 // 发送
 function userButton() {
-
+  stomp.send("/app/one", {}, JSON.stringify({"user": sendUser.value, "msg": userText.value}))
 }
 
 // 接收的消息
@@ -143,7 +149,7 @@ const appText = ref("");
 
 // 发送
 function appButton() {
-
+  stomp.send("/topic/aaa", {}, JSON.stringify({"msg": appText.value}))
 }
 
 // 接收的消息
