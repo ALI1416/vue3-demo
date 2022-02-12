@@ -4,8 +4,8 @@
 `npm config set registry https://registry.npm.taobao.org`
   - 查看镜像源
   `npm config get registry`
-- 创建项目v3
-`npm init vite-app v3`
+- 创建项目vue3
+`npm init vite-app vue3`
 - 需要安装`create-vite-app`，选择`Y`
 ```txt
 Need to install the following packages:
