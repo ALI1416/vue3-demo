@@ -315,7 +315,7 @@ function generate() {
   }
   svgData.value.length = 0;
   for (let i = numMin.value; i <= numMax.value; i++) {
-    const name = padZero(i, fillZeroLength.value);
+    const name = fillZero.value ? padZero(i, fillZeroLength.value) : i.toString();
     svgData.value.push([name, getSvg(name.split(''))])
   }
   generateMsg.value = '已生成' + svgData.value.length + '个SVG图片'
