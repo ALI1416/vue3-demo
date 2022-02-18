@@ -2,8 +2,8 @@
 
 - 安装vue-cli  
   `npm install -g @vue/cli`
-- 首次生成模板并创建项目`v3`  
-  `vue create v3`
+- 首次生成模板并创建项目`vue3`  
+  `vue create vue3`
   - 提示是否使用淘宝镜像
   - 选择`Y`，是
   ```txt

@@ -1,4 +1,4 @@
-# 使用vite创建
+# 使用vite创建v1
 
 - npm切换到淘宝镜像
 `npm config set registry https://registry.npm.taobao.org`
