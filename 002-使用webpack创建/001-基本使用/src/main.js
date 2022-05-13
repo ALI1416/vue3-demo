@@ -1,7 +1,7 @@
 /* 入口文件 */
 
 // npm官网下载速度较慢，需要切换镜像源
-// 设置淘宝源 npm config set registry https://registry.npm.taobao.org
+// 设置淘宝源 npm config set registry https://registry.npmmirror.com/
 // 查看源 npm config get registry
 
 // 使用webpack必须安装webpack和webpack-cli包（全局）
@@ -17,5 +17,6 @@ fb();
 
 // ES6的模块引入方式（使用webpack打包时，可以不加文件后缀）
 import { a, b } from './b'
+
 console.log(a);
 console.log(b);

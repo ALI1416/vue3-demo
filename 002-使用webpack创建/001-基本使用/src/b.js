@@ -2,4 +2,4 @@
 const a = 'ES6 const a';
 const b = 'ES6 const b';
 //导出
-export { a, b }
+export {a, b}

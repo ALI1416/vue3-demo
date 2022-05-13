@@ -8,7 +8,7 @@
   - 选择`Y`，是
   ```txt
   ? Your connection to the default npm registry seems to be slow.
-    Use https://registry.npm.taobao.org for faster installation? (Y/n)
+    Use https://registry.npmmirror.com/ for faster installation? (Y/n)
   ```
   - 提示选择模板
   - 选择`Manually select features`，创建一个新的
@@ -64,6 +64,7 @@
   ? Save preset as:
   ```
 - 下次创建项目时，会提示如下，选择`vue3`即可
+
 ```txt
   Vue CLI v4.5.15
 ? Please pick a preset: (Use arrow keys)
@@ -72,5 +73,6 @@
   Default (Vue 3) ([Vue 3] babel, eslint)
   Manually select features
 ```
+
 - 升级vue版本
-`vue upgrade --next`
+  `vue upgrade --next`
