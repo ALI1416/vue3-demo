@@ -261,7 +261,7 @@ console.log(Direction3.Up)
 // 字符串枚举，全部都要指定值
 enum Direction4 {Up = 'up', Down = "DOWN", Left = "Left", Right = "right"}
 
-console.log(Direction2.Up)
+console.log(Direction4.Up)
 
 // 枚举会被编译成js代码
 // 例如对`enum Direction {Up, Down, Left, Right}`的编译如下
@@ -293,3 +293,14 @@ console.log(Direction2.Up)
 // function f(num1, num2) {
 // }
 
+/* typeof */
+// 查询类型
+console.log(typeof 'Hello')
+// 类型上下文，查询变量或属性的类型
+let p={x:1,y:2}
+function pp(point:typeof p){
+  console.log(point)
+}
+pp({x:100,y:200})
+// 查询属性的类型
+console.log(typeof p.x)
