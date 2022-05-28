@@ -8,13 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "element-plus": "^2.2.0",
+    "element-plus": "^2.2.2",
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
-    "unplugin-auto-import": "^0.7.1",
-    "unplugin-vue-components": "^0.19.5",
+    "unplugin-auto-import": "^0.8.5",
+    "unplugin-vue-components": "^0.19.6",
     "vite": "^2.9.9"
   }
 }
