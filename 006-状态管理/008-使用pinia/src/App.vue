@@ -30,7 +30,7 @@
 
 <script setup>
 // 导入
-import useStore from '../store/index'
+import useStore from './store/index'
 // pinia工具类：
 // storeToRefs：解构
 import {storeToRefs} from 'pinia'
