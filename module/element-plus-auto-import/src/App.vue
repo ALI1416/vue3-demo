@@ -5,7 +5,7 @@
   <HelloWorld/>
 
   <el-row class="mb-4">
-    <el-button>Default</el-button>
+    <el-button @click="error">Default</el-button>
     <el-button type="primary">Primary</el-button>
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
@@ -50,6 +50,14 @@ import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import {Check, Delete, Edit, Message, Search, Star} from '@element-plus/icons-vue'
 import {ref} from 'vue'
 import HelloWorld from "./components/HelloWorld.vue";
+// 如果您使用 unplugin-element-plus 并且只使用组件 API，您需要手动导入样式。
+import 'element-plus/es/components/message/style/css'
+import {ElMessage} from 'element-plus'
 
 const value = ref(new Date())
+
+function error() {
+  ElMessage.error('Oops, this is a error message.')
+}
+
 </script>
