@@ -4,8 +4,7 @@
 
 <script setup>
 import AMapLoader from '@amap/amap-jsapi-loader';
-import {shallowRef} from '@vue/reactivity'
-import {onMounted} from "vue";
+import {onMounted, shallowRef} from "vue";
 
 const map = shallowRef(null);
 
@@ -16,6 +15,7 @@ function initMap() {
     // 指定要加载的JSAPI的版本，缺省时默认为1.4.15
     version: "2.0",
     // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+    // https://lbs.amap.com/api/jsapi-v2/guide/webcli/map-vue1
     // https://lbs.amap.com/api/jsapi-v2/guide/overlays/toolbar
     // https://lbs.amap.com/api/jsapi-v2/documentation#control
     plugins: ['AMap.Scale', 'AMap.ToolBar', 'AMap.ControlBar', 'AMap.MapType', 'AMap.HawkEye', 'AMap.Geolocation'],
@@ -52,7 +52,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 #container {
   padding: 0;
   margin: 0;

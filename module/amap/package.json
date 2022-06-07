@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@vue/reactivity": "^3.2.36",
     "vue": "^3.2.25"
   },
   "devDependencies": {
