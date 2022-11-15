@@ -1,5 +1,8 @@
 # vue3-demo vue3学习
 
+## 设置镜像源
+`npm config set registry https://registry.npmmirror.com`
+
 ## 项目链接
 [Github](https://github.com/ALI1416/vue3-demo)
 
