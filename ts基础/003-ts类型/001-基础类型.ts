@@ -25,6 +25,7 @@ let nums: number[] = [1, 3, 5, 7]
 let strs: Array<string> = ['字', '符', '串']
 console.log(nums)
 console.log(strs)
+
 /* 联合类型 */
 // 表示该数组里可以包含number或string类型
 let arr: (number | string)[] = [1, 3, 5, 7, '字', '符', '串']
@@ -34,6 +35,7 @@ let arr3: number | string[] = ['字', '符', '串']
 console.log(arr)
 console.log(arr2)
 console.log(arr3)
+
 /* 类型别名 */
 // 使用type创建别名
 type CustomArray = (number | string)[]
@@ -297,10 +299,12 @@ console.log(Direction4.Up)
 // 查询类型
 console.log(typeof 'Hello')
 // 类型上下文，查询变量或属性的类型
-let p={x:1,y:2}
-function pp(point:typeof p){
+let p = {x: 1, y: 2}
+
+function pp(point: typeof p) {
   console.log(point)
 }
-pp({x:100,y:200})
+
+pp({x: 100, y: 200})
 // 查询属性的类型
 console.log(typeof p.x)
