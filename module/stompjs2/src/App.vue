@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import Stomp from 'stompjs'
+import {Client} from "@stomp/stompjs";
 import {ref} from 'vue'
 
 let stomp;
@@ -104,8 +104,15 @@ function connect() {
   const headers = {
     username: usernameText.value
   }
-  stomp = Stomp.client(url)
-  stomp.connect(headers, connectCallback, errorCallback)
+  stomp = new Client({
+    brokerURL: url,
+    connectHeaders: headers,
+    reconnectDelay: 0,
+    onConnect: connectCallback,
+    onWebSocketClose: closeCallback,
+    onWebSocketError: errorCallback
+  })
+  stomp.activate()
 }
 
 /**
@@ -132,12 +139,21 @@ function connectCallback() {
 }
 
 /**
+ * 连接关闭回调
+ */
+function closeCallback(e) {
+  connectStatus(false)
+  stomp = undefined
+  errorMsg.value = '连接关闭回调' + '\n' + errorMsg.value
+}
+
+/**
  * 连接错误回调
  */
 function errorCallback(e) {
   connectStatus(false)
   stomp = undefined
-  errorMsg.value = e + '\n' + errorMsg.value
+  errorMsg.value = '连接错误回调' + '\n' + errorMsg.value
 }
 
 /**
@@ -145,7 +161,7 @@ function errorCallback(e) {
  */
 function disconnect() {
   if (stomp !== undefined) {
-    stomp.disconnect()
+    stomp.deactivate()
     stomp = undefined
     connectStatus(false)
   }
@@ -171,14 +187,14 @@ function connectStatus(status) {
  * 发送广播消息
  */
 function broadcastBtn() {
-  stomp.send(broadcastSendText.value, {}, broadcastText.value)
+  stomp.publish({destination: broadcastSendText.value, body: broadcastText.value})
 }
 
 /**
  * 发送用户消息
  */
 function userBtn() {
-  stomp.send(userSendText.value + userSendUsernameText.value, {}, userText.value)
+  stomp.publish({destination: userSendText.value + userSendUsernameText.value, body: userText.value})
 }
 
 </script>

@@ -1,11 +1,11 @@
 # axios
 
 - `npm install axios --save`
-- https://github.com/axios/axios
 - http://www.axios-js.com/
+- https://github.com/axios/axios
 
 # mockjs
 
 - `npm install mockjs --save`
-- https://github.com/nuysoft/Mock
 - http://mockjs.com/
+- https://github.com/nuysoft/Mock

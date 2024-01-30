@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@stomp/stompjs": "^7.0.0",
     "vue": "^3.3.8"
   },
   "devDependencies": {
