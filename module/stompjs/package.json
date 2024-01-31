@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "stompjs": "^2.3.3",
+    "@stomp/stompjs": "^7.0.0",
     "vue": "^3.3.8"
   },
   "devDependencies": {

@@ -1,7 +1,4 @@
 <template>
-  <!-- 全局中文 -->
-  <el-config-provider :locale="zhCn"/>
-
   <HelloWorld/>
 
   <el-row class="mb-4">
@@ -45,19 +42,17 @@
 </template>
 
 <script lang="ts" setup>
-// 全局中文
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+// 自动导入 js 840k+ css 30k+
 import {Check, Delete, Edit, Message, Search, Star} from '@element-plus/icons-vue'
+import {ElMessage} from 'element-plus'
 import {ref} from 'vue'
 import HelloWorld from "./components/HelloWorld.vue";
-// 如果您使用 unplugin-element-plus 并且只使用组件 API，您需要手动导入样式。
+// 如果使用 unplugin-element-plus 并且只使用组件 API，你需要手动导入样式。
 import 'element-plus/es/components/message/style/css'
-import {ElMessage} from 'element-plus'
 
 const value = ref(new Date())
 
 function error() {
   ElMessage.error('Oops, this is a error message.')
 }
-
 </script>

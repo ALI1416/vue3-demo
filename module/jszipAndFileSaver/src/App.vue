@@ -10,7 +10,7 @@ const zip = new JSZip();
 
 async function download() {
   // 抓取文件
-  const logoBlob = await fetch("logo.png").then(res => res.blob());
+  const logoBlob = await fetch("favicon.ico").then(res => res.blob());
   // 装载文件
   const time = new Date().getTime();
   const folder = zip.folder(time.toString());

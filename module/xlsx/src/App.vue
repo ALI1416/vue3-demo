@@ -37,7 +37,6 @@
 </template>
 
 <script setup>
-// 文档 https://docs.sheetjs.com/
 import {read, utils, writeFile} from 'xlsx'
 
 function arrayDownload() {

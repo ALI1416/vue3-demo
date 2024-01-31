@@ -1,3 +1,3 @@
 # vue
 
-- https://staging-cn.vuejs.org/
+- https://cn.vuejs.org/

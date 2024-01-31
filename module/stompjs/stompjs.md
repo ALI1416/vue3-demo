@@ -1,5 +1,5 @@
-# stomp
+# stompjs
 
-- `npm install stompjs --save`
-- http://jmesnil.net/stomp-websocket/doc/
-- https://github.com/jmesnil/stomp-websocket
+- `npm install @stomp/stompjs --save`
+- https://stomp-js.github.io/
+- https://github.com/stomp-js/stompjs

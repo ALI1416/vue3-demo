@@ -57,10 +57,8 @@
 </template>
 
 <script setup>
-import Stomp from 'stompjs'
+import {Client} from "@stomp/stompjs";
 import {ref} from 'vue'
-
-let stomp;
 
 const urlText = ref("ws://127.0.0.1:8080/ws");
 const usernameText = ref("ali");
@@ -83,11 +81,19 @@ const userBtnDisabled = ref(true);
 const userSubscribeText = ref("/user/queue/sendToUser");
 const userMsg = ref("");
 
+let isConnect = false
+const stomp = new Client({
+  reconnectDelay: 5000,
+  onConnect: connectCallback,
+  onWebSocketClose: closeCallback,
+  onWebSocketError: errorCallback
+})
+
 /**
  * 连接/断开按钮
  */
 function connectBtn() {
-  if (stomp === undefined) {
+  if (!isConnect) {
     connectBtnText.value = '连接中...';
     connectBtnDisabled.value = true;
     connect();
@@ -100,18 +106,18 @@ function connectBtn() {
  * 连接
  */
 function connect() {
-  const url = urlText.value
-  const headers = {
+  stomp.brokerURL = urlText.value
+  stomp.connectHeaders = {
     username: usernameText.value
   }
-  stomp = Stomp.client(url)
-  stomp.connect(headers, connectCallback, errorCallback)
+  stomp.activate()
 }
 
 /**
  * 连接成功回调
  */
 function connectCallback() {
+  isConnect = true
   connectStatus(true)
   // 广播消息
   stomp.subscribe(broadcastSubscribeText.value, function (res) {
@@ -132,21 +138,29 @@ function connectCallback() {
 }
 
 /**
+ * 连接关闭回调
+ */
+function closeCallback(e) {
+  isConnect = false
+  connectStatus(false)
+  errorMsg.value = '连接关闭回调' + '\n' + errorMsg.value
+}
+
+/**
  * 连接错误回调
  */
 function errorCallback(e) {
+  isConnect = false
   connectStatus(false)
-  stomp = undefined
-  errorMsg.value = e + '\n' + errorMsg.value
+  errorMsg.value = '连接错误回调' + '\n' + errorMsg.value
 }
 
 /**
  * 断开
  */
 function disconnect() {
-  if (stomp !== undefined) {
-    stomp.disconnect()
-    stomp = undefined
+  if (isConnect) {
+    stomp.deactivate()
     connectStatus(false)
   }
 }
@@ -171,14 +185,14 @@ function connectStatus(status) {
  * 发送广播消息
  */
 function broadcastBtn() {
-  stomp.send(broadcastSendText.value, {}, broadcastText.value)
+  stomp.publish({destination: broadcastSendText.value, body: broadcastText.value})
 }
 
 /**
  * 发送用户消息
  */
 function userBtn() {
-  stomp.send(userSendText.value + userSendUsernameText.value, {}, userText.value)
+  stomp.publish({destination: userSendText.value + userSendUsernameText.value, body: userText.value})
 }
 
 </script>

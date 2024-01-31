@@ -42,6 +42,7 @@
 </template>
 
 <script lang="ts" setup>
+// 全部导入 js 840k+ css 300k+
 import {Check, Delete, Edit, Message, Search, Star} from '@element-plus/icons-vue'
 import {ElMessage} from 'element-plus'
 import {ref} from 'vue'

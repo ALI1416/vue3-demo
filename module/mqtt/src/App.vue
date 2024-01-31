@@ -17,7 +17,7 @@
 
 <script setup>
 import {ref} from 'vue'
-import mqtt from "mqtt/dist/mqtt.min";
+import mqtt from "mqtt";
 
 let client = null;
 const url = "ws://127.0.0.1:9001/mqtt";
