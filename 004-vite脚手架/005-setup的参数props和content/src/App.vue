@@ -9,7 +9,6 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import {computed, ref} from 'vue'
-
 export default {
   name: 'App',
   setup() {
