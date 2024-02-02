@@ -7,8 +7,9 @@ import {computed, toRefs} from 'vue'
 
 export default {
   name: 'HelloWorld',
-  // 声明要接受的参数
-  props: ['firstName', 'lastName'],
+  // 声明要接受的参数 在<script setup>中使用defineProps(['firstName', 'lastName'])获取props
+  // 也可以标注类型，例如defineProps({firstName:String, lastName:String})
+  props: ['firstName', 'lastName','class'],
   // setup可以接收参数props和内容content
   // props需要声明
   // content包括HTML属性attrs、发射事件emit、暴露公共property函数expose、插槽slots等

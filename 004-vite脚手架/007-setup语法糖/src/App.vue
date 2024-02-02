@@ -9,15 +9,29 @@
   <p>姓：{{ firstName }} 名：{{ lastName }}</p>
   <button @click="changeFirstName">姓修改</button>
   <button @click="changeLastName">名修改</button>
-  <p>翻转后的名：{{ reverseLastName }}</p>
+  <p ref="p">翻转后的名：{{ reverseLastName }}</p>
+  <!-- 使用$emit触发自定义事件 -->
+  <HelloWorld @some-event='someEventCallback'/>
+  <p>{{ someEventValue }}</p>
 </template>
 
 <!--script setup语法糖，不用return-->
 <script setup>
-import {ref, reactive, toRefs, computed, watch, watchEffect} from 'vue'
+import {computed, onMounted, reactive, ref, toRefs, watch, watchEffect, watchPostEffect} from 'vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 // 定义值，使用ref函数，参数是变量的值
 const num = ref(0);
+
+// ref模板引用：获取该对象
+const p = ref(null)
+
+// 获取子组件传值
+defineEmits(['someEvent'])
+const someEventValue = ref(0)
+function someEventCallback(n) {
+  console.log(n)
+}
 
 // 定义函数
 function numAdd() {
@@ -59,5 +73,12 @@ watch([num, name], (newValue, oldValue) => {
 watchEffect(() => {
   console.log('智能监听name.first', name.firstName);
 })
-
+// 智能监听(vue更新后执行)
+watchPostEffect(() => {
+  console.log('智能监听(vue更新后执行)name.first', name.firstName);
+})
+onMounted(() => {
+  // 打印p对象
+  console.log(p.value)
+})
 </script>
