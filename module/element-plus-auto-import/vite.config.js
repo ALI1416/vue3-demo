@@ -1,6 +1,6 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-// 自动导入
+// 自动导入 js 130k+ css 30k+
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
