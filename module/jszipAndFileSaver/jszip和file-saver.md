@@ -7,5 +7,6 @@
 ## file-saver
 
 - `npm install file-saver --save`
+- `npm install @types/file-saver --save-dev`
 - https://github.com/eligrey/FileSaver.js
 - https://eligrey.com/blog/saving-generated-files-on-the-client-side/
