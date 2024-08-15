@@ -21,12 +21,12 @@ async function download() {
   }
   // 压缩文件
   const zipFile = await zip.generateAsync({type: 'blob'})
+  // 下载
+  FileSaver.saveAs(zipFile, time + '.zip')
   // 解压文件
   const unzipFile = await zip.loadAsync(zipFile)
   console.log(unzipFile)
   let s = await unzipFile.file(time + '/hello/Hello0.txt').async('string')
   console.log(s)
-  // 下载
-  FileSaver.saveAs(zipFile, time + '.zip')
 }
 </script>
