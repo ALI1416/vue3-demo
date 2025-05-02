@@ -15,6 +15,8 @@
   [![NPM](https://img.shields.io/npm/v/vue?label=NPM)](https://npmmirror.com/package/vue)
 - `vite` : `vite`  
   [![NPM](https://img.shields.io/npm/v/vite?label=NPM)](https://npmmirror.com/package/vite)
+- `vite插件vue开发工具` : `vite-plugin-vue-devtools`  
+  [![NPM](https://img.shields.io/npm/v/vite-plugin-vue-devtools?label=NPM)](https://npmmirror.com/package/vite-plugin-vue-devtools)
 - `vite整合vue插件` : `@vitejs/plugin-vue`  
   [![NPM](https://img.shields.io/npm/v/@vitejs/plugin-vue?label=NPM)](https://npmmirror.com/package/@vitejs/plugin-vue)
 - `路由` : `vue-router`  
@@ -70,8 +72,8 @@
 
 ### TypeScript
 
-- `@tsconfig/node20` : `@tsconfig/node20`  
-  [![NPM](https://img.shields.io/npm/v/@tsconfig/node20?label=NPM)](https://npmmirror.com/package/@tsconfig/node20)
+- `@tsconfig/node22` : `@tsconfig/node22`  
+  [![NPM](https://img.shields.io/npm/v/@tsconfig/node22?label=NPM)](https://npmmirror.com/package/@tsconfig/node22)
 - `@types/node` : `@types/node`  
   [![NPM](https://img.shields.io/npm/v/@types/node?label=NPM)](https://npmmirror.com/package/@types/node)
 - `@vue/tsconfig` : `@vue/tsconfig`  

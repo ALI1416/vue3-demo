@@ -1,17 +1,18 @@
 <template>
-  <div id="main" style="width: 800px;height: 400px"></div>
+  <div ref="main" style="width: 800px;height: 400px"></div>
 </template>
 
 <script setup>
 // 全部导入：打包后1050k+
-import * as echarts from 'echarts';
-import {onMounted} from "vue";
+import * as echarts from 'echarts'
+import {onMounted, ref} from 'vue'
 
-let myChart;
+let main = ref()
+let myChart
 
 onMounted(() => {
   // 基于准备好的dom，初始化echarts实例
-  myChart = echarts.init(document.getElementById('main'));
+  myChart = echarts.init(main.value)
   // 绘制图表
   myChart.setOption({
     title: {
@@ -29,6 +30,6 @@ onMounted(() => {
         data: [5, 20, 36, 10, 10, 20]
       }
     ]
-  });
+  })
 })
 </script>

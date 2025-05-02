@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-// https://cn.vitejs.dev/guide/env-and-mode.html
+// https://vite.dev/guide/env-and-mode
 
 interface ImportMeta {
   readonly env: ImportMetaEnv
