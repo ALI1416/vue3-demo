@@ -11,7 +11,7 @@ interface ImportMetaEnv {
    */
   readonly VITE_APP_TITLE: string
   /**
-   * Web URL
+   * API URL
    */
-  readonly VITE_WEB_URL: string
+  readonly VITE_API_URL: string
 }

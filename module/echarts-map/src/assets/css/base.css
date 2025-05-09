@@ -4,6 +4,5 @@
   list-style-type: none;
   outline: none;
   box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: #FFFFFF99 #FFFFFF33;
+  overflow: hidden;
 }
