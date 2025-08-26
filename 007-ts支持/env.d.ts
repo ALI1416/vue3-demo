@@ -7,7 +7,7 @@ interface ImportMeta {
 
 interface ImportMetaEnv {
   /**
-   * APP标题
+   * 网站标题
    */
-  readonly VITE_APP_TITLE: string
+  readonly VITE_WEB_TITLE: string
 }
