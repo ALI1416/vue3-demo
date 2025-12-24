@@ -4,5 +4,8 @@
   list-style-type: none;
   outline: none;
   box-sizing: border-box;
+}
+
+body {
   overflow: hidden;
 }
