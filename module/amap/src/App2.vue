@@ -3,23 +3,56 @@ import {Ref, ref} from 'vue'
 import coordtransform from 'coordtransform'
 import * as geolib from 'geolib'
 
-const beginPosition = ref(false)
+/**
+ * 位置状态
+ * 0 未定位
+ * 1 正在定位中
+ * 2 定位成功
+ * 3 定位失败
+ */
+let positionState = ref(0)
 const positionInfo: Ref<GeolocationPosition> = ref()
+const errorInfo = ref()
 const gcjLongitude = ref()
 const gcjLatitude = ref()
 const deviation = ref()
 
 async function showPosition() {
-  beginPosition.value = true
-  positionInfo.value = await getPosition()
-  let gcj = coordtransform.wgs84togcj02(positionInfo.value.coords.longitude, positionInfo.value.coords.latitude)
-  gcjLongitude.value = gcj[0]
-  gcjLatitude.value = gcj[1]
-  deviation.value = geolib.getDistance(
-      {longitude: positionInfo.value.coords.longitude, latitude: positionInfo.value.coords.latitude},
-      {longitude: gcj[0], latitude: gcj[1]},
-  )
-  beginPosition.value = false
+  positionState.value = 1
+  try {
+    positionInfo.value = await getPosition()
+    let gcj = coordtransform.wgs84togcj02(positionInfo.value.coords.longitude, positionInfo.value.coords.latitude)
+    gcjLongitude.value = gcj[0]
+    gcjLatitude.value = gcj[1]
+    deviation.value = geolib.getDistance(
+        {longitude: positionInfo.value.coords.longitude, latitude: positionInfo.value.coords.latitude},
+        {longitude: gcj[0], latitude: gcj[1]},
+    )
+    positionState.value = 2
+  } catch (e: Error) {
+    errorInfo.value = e.message
+    positionState.value = 3
+  }
+}
+
+function getPositionState(): string {
+  switch (positionState.value) {
+    case 0: {
+      return '未定位'
+    }
+    case 1: {
+      return '正在定位中'
+    }
+    case 2: {
+      return '定位成功'
+    }
+    case 3: {
+      return errorInfo.value
+    }
+    default: {
+      return '未知'
+    }
+  }
 }
 
 async function getPosition(): Promise<GeolocationPosition> {
@@ -57,7 +90,7 @@ async function getPosition(): Promise<GeolocationPosition> {
 
 <template>
   <button @click="showPosition">获取位置信息</button>
-  <h3>位置信息{{ beginPosition ? '(正在定位中)' : '' }}</h3>
+  <h3>位置信息{{ `(${getPositionState()})` }}</h3>
   <p>WGS84经度：{{ positionInfo?.coords?.longitude }}</p>
   <p>WGS84纬度：{{ positionInfo?.coords?.latitude }}</p>
   <p>GCJ02经度：{{ gcjLongitude }}</p>
