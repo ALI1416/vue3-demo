@@ -1,0 +1,19 @@
+{
+  "name": "vue3",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --base=/abc",
+    "build": "vite build --base=/abc",
+    "preview": "vite preview --host --base=/abc"
+  },
+  "dependencies": {
+    "vue": "^3.5.41"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0",
+    "vite-plugin-vue-devtools": "^8.2.1"
+  }
+}

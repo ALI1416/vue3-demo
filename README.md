@@ -71,8 +71,8 @@
     [![NPM](https://img.shields.io/npm/v/unplugin-auto-import?label=NPM)](https://npmmirror.com/package/unplugin-auto-import)
   - `element-plus自动导入` : `unplugin-vue-components`  
     [![NPM](https://img.shields.io/npm/v/unplugin-vue-components?label=NPM)](https://npmmirror.com/package/unplugin-vue-components)
-  - `@tsconfig/node22` : `@tsconfig/node22`  
-    [![NPM](https://img.shields.io/npm/v/@tsconfig/node22?label=NPM)](https://npmmirror.com/package/@tsconfig/node22)
+  - `@tsconfig/node24` : `@tsconfig/node24`  
+    [![NPM](https://img.shields.io/npm/v/@tsconfig/node24?label=NPM)](https://npmmirror.com/package/@tsconfig/node24)
   - `@types/node` : `@types/node`  
     [![NPM](https://img.shields.io/npm/v/@types/node?label=NPM)](https://npmmirror.com/package/@types/node)
   - `@vue/tsconfig` : `@vue/tsconfig`  

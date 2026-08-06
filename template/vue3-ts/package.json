@@ -1,0 +1,29 @@
+{
+  "name": "vue3",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --base=/abc",
+    "build": "vite build --base=/abc",
+    "preview": "vite preview --host --base=/abc",
+    "type-check": "vue-tsc --build",
+    "build-check": "run-p type-check \"build {@}\" --"
+  },
+  "dependencies": {
+    "pinia": "^4.0.2",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^24.13.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "npm-run-all2": "^9.0.2",
+    "typescript": "~6.0.3",
+    "vite": "^8.2.0",
+    "vite-plugin-vue-devtools": "^8.2.1",
+    "vue-tsc": "^3.3.9"
+  }
+}
