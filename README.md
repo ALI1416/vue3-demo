@@ -26,12 +26,6 @@
     [![NPM](https://img.shields.io/npm/v/element-plus?label=NPM)](https://npmmirror.com/package/element-plus)
   - `axios` : `axios`  
     [![NPM](https://img.shields.io/npm/v/axios?label=NPM)](https://npmmirror.com/package/axios)
-  - `mockjs` : `mockjs`  
-    [![NPM](https://img.shields.io/npm/v/mockjs?label=NPM)](https://npmmirror.com/package/mockjs)
-  - `jszip` : `jszip`  
-    [![NPM](https://img.shields.io/npm/v/jszip?label=NPM)](https://npmmirror.com/package/jszip)
-  - `file-saver` : `file-saver`  
-    [![NPM](https://img.shields.io/npm/v/file-saver?label=NPM)](https://npmmirror.com/package/file-saver)
   - `mqtt` : `mqtt`  
     [![NPM](https://img.shields.io/npm/v/mqtt?label=NPM)](https://npmmirror.com/package/mqtt)
   - `stompjs` : `@stomp/stompjs`  
@@ -60,7 +54,13 @@
     [![NPM](https://img.shields.io/npm/v/js-bullets?label=NPM)](https://npmmirror.com/package/js-bullets)
   - `canvas-nest` : `canvas-nest.js`  
     [![NPM](https://img.shields.io/npm/v/canvas-nest.js?label=NPM)](https://npmmirror.com/package/canvas-nest.js)
+  - `zip.js` : `@zip.js/zip.js`  
+    [![NPM](https://img.shields.io/npm/v/@zip.js/zip.js?label=NPM)](https://npmmirror.com/package/@zip.js/zip.js)
 - 开发依赖 :
+  - `@faker-js/faker` : `数据生成工具`  
+    [![NPM](https://img.shields.io/npm/v/@faker-js/faker?label=NPM)](https://npmmirror.com/package/@faker-js/faker)
+  - `msw` : `Mock Service Worker`  
+    [![NPM](https://img.shields.io/npm/v/msw?label=NPM)](https://npmmirror.com/package/msw)
   - `vite` : `vite`  
     [![NPM](https://img.shields.io/npm/v/vite?label=NPM)](https://npmmirror.com/package/vite)
   - `vite整合vue插件` : `@vitejs/plugin-vue`  

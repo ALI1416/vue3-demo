@@ -51,7 +51,7 @@ const store = defineStore('main', {
     },
     async incrementNum(num) {
       // 异步
-      const res = await fetch('http://httpbin.org/get');
+      const res = await fetch('https://httpbin.org/get');
       const json = await res.json();
       console.log(json);
       this.count += num;
